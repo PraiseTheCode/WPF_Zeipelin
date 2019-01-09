@@ -1,0 +1,254 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:oxy="http://oxyplot.org/wpf" xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="WPF_Zeipelin.MainWindow"
+        xmlns:local="clr-namespace:WPF_Zeipelin"
+        mc:Ignorable="d"
+        Title="Zeipelin" Height="630" Width="1249"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"        
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}" Icon="zeip32.ico" 
+    >
+
+    <Window.DataContext>
+        <local:MainViewModel/>
+    </Window.DataContext>
+    <Grid Background="#FFEAEAEA" Margin="0,0,2,4">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="134*"/>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="279*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="299*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <GroupBox x:Name="gb2" Header="spectrum calculation" HorizontalAlignment="Left" Height="257" Margin="0,336,0,0" VerticalAlignment="Top" Width="402" BorderThickness="0,1,0,0" FontSize="14" Foreground="#FF5E1CAE" BorderBrush="#FC5A2FEC" Padding="9,3">
+            <Grid HorizontalAlignment="Left" Height="227" Margin="0,3,0,-2" VerticalAlignment="Top" Width="130">
+                <TextBox x:Name="txtNLambda" Padding="0" HorizontalAlignment="Left" Height="24" Margin="75,10,0,0" TextWrapping="Wrap" Text="1000" VerticalAlignment="Top" Width="54"/>
+                <TextBox x:Name="txtLambda0" Padding="0" HorizontalAlignment="Left" Height="22" Margin="75,40,0,0" TextWrapping="Wrap" Text="4500" VerticalAlignment="Top" Width="54"/>
+                <TextBox x:Name="txtDLambda" Padding="0" HorizontalAlignment="Left" Height="22" Margin="75,69,0,0" TextWrapping="Wrap" Text="0,0500" VerticalAlignment="Top" Width="54"/>
+                <TextBox x:Name="txtVturb" Padding="0" HorizontalAlignment="Left" Height="22" Margin="75,96,0,0" TextWrapping="Wrap" Text="2" VerticalAlignment="Top" Width="54"/>
+                <TextBox x:Name="txtResPow" Padding="0" HorizontalAlignment="Left" Height="22" Margin="75,158,0,0" TextWrapping="Wrap" Text="37500" VerticalAlignment="Top" Width="54" RenderTransformOrigin="0.394,0.727"/>
+                <Label Content="d lambda" HorizontalAlignment="Left" Margin="0,68,0,0" VerticalAlignment="Top" Height="24" Width="81" FontSize="11"/>
+                <Label Content="n lambda" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" Height="24" Width="81" FontSize="11"/>
+                <Label Content="lambda0" HorizontalAlignment="Left" Margin="0,40,0,0" VerticalAlignment="Top" Height="24" Width="81" FontSize="11"/>
+                <Label Content="V turb" HorizontalAlignment="Left" Margin="0,96,0,0" VerticalAlignment="Top" Height="24" Width="81" FontSize="11"/>
+                <Label Content="metallicity" HorizontalAlignment="Left" Margin="0,126,0,0" VerticalAlignment="Top" Height="24" Width="81" FontSize="11"/>
+                <ComboBox x:Name="cbMet" HorizontalAlignment="Left" Margin="75,124,0,0" VerticalAlignment="Top" Width="54">
+                    <System:String>-4,0</System:String>
+                    <System:String>-3,0</System:String>
+                    <System:String>-2,5</System:String>
+                    <System:String>-2,0</System:String>
+                    <System:String>-1,5</System:String>
+                    <System:String>-1,0</System:String>
+                    <System:String>-0,5</System:String>
+                    <System:String>-0,3</System:String>
+                    <System:String>-0,2</System:String>
+                    <System:String>-0,1</System:String>
+                    <System:String>0,0</System:String>
+                    <System:String>0,1</System:String>
+                    <System:String>0,2</System:String>
+                    <System:String>0,3</System:String>
+                    <System:String>0,5</System:String>
+                    <System:String>1,0</System:String>
+                </ComboBox>
+                <Label Content="R" HorizontalAlignment="Left" Margin="0,158,0,0" VerticalAlignment="Top" Height="24" Width="81" FontSize="11"/>
+                <TextBox x:Name="txtNThreads" Padding="0" HorizontalAlignment="Left" Height="22" Margin="75,184,0,0" TextWrapping="Wrap" Text="4" VerticalAlignment="Top" Width="54" RenderTransformOrigin="0.394,0.727"/>
+                <Label Content="threads" HorizontalAlignment="Left" Margin="0,185,0,0" VerticalAlignment="Top" Height="24" Width="81" FontSize="11"/>
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="star model calculation" HorizontalAlignment="Left" Height="321" Margin="0,10,0,0" VerticalAlignment="Top" Width="1220" BorderThickness="0,1,0,0" FontSize="14" Foreground="#FF371066" BorderBrush="#FF380EC5" Padding="9,3" Opacity="30" Grid.ColumnSpan="3">
+            <Grid HorizontalAlignment="Left" Height="279" Margin="0,1,0,-16" VerticalAlignment="Top" Width="130">
+                <TextBox x:Name="txtInc" Padding="0" HorizontalAlignment="Left" Height="24" Margin="75,10,0,0" TextWrapping="Wrap" Text="6" VerticalAlignment="Top" Width="54" AutomationProperties.Name="txtInc"/>
+                <TextBox x:Name="txtMass" Padding="0" HorizontalAlignment="Left" Height="22" Margin="75,40,0,0" TextWrapping="Wrap" Text="2,3" VerticalAlignment="Top" Width="54"/>
+                <TextBox x:Name="txtLoggPole" Padding="0" HorizontalAlignment="Left" Height="22" Margin="75,68,0,0" TextWrapping="Wrap" Text="4,076" VerticalAlignment="Top" Width="54"/>
+                <TextBox x:Name="txtTPole" Padding="0" HorizontalAlignment="Left" Height="22" Margin="75,96,0,0" TextWrapping="Wrap" Text="10000" VerticalAlignment="Top" Width="54"/>
+                <TextBox x:Name="txtNRings" Padding="0" HorizontalAlignment="Left" Height="22" Margin="75,124,0,0" TextWrapping="Wrap" Text="32" VerticalAlignment="Top" Width="54"/>
+                <TextBox x:Name="txtDPhi" Padding="0" Height="22" Margin="75,152,30,0" TextWrapping="Wrap" Text="10" VerticalAlignment="Top"/>
+                <TextBox x:Name="txtDBeta" Padding="0" HorizontalAlignment="Left" Height="22" Margin="105,152,0,0" TextWrapping="Wrap" Text="180" VerticalAlignment="Top" Width="24"/>
+                <Label Content="logg on pole" HorizontalAlignment="Left" Margin="0,69,0,0" VerticalAlignment="Top" Height="24" Width="81" FontSize="11"/>
+                <Label Content="inclination" HorizontalAlignment="Left" Margin="0,11,0,0" VerticalAlignment="Top" Height="24" Width="81" FontSize="11"/>
+                <Label Content="mass (s.m.)" HorizontalAlignment="Left" Margin="0,41,0,0" VerticalAlignment="Top" Height="24" Width="81" FontSize="11"/>
+                <Label Content="T on pole" HorizontalAlignment="Left" Margin="0,97,0,0" VerticalAlignment="Top" Height="24" Width="81" FontSize="11"/>
+                <Label Content="rings" HorizontalAlignment="Left" Margin="0,125,0,0" VerticalAlignment="Top" Height="24" Width="81" FontSize="11"/>
+                <Label Content="subpartition" HorizontalAlignment="Left" Margin="0,152,0,0" VerticalAlignment="Top" Height="24" Width="81" FontSize="11"/>
+                <RadioButton x:Name="rbVe" Content="Ve(km/s)" HorizontalAlignment="Left" Margin="-3,189,0,0" VerticalAlignment="Top" FontSize="12" IsChecked="True" Checked="rbVe_Checked"/>
+                <RadioButton x:Name="rbW" Content="w(rad/s)" HorizontalAlignment="Right" Margin="-3,215,65,0" VerticalAlignment="Top" FontSize="12" Checked="rbW_Checked" Width="68"/>
+                <TextBox x:Name="txtW" Padding="0" HorizontalAlignment="Left" Height="22" Margin="68,212,0,0" TextWrapping="Wrap" Text="0,00013" VerticalAlignment="Top" Width="61" IsEnabled="False"/>
+                <TextBox x:Name="txtVe" Padding="0" HorizontalAlignment="Left" Height="22" Margin="81,186,0,0" TextWrapping="Wrap" Text="230" VerticalAlignment="Top" Width="48"/>
+                <Button x:Name="btnCalcModel" Content="Calc model" Margin="1,253,0,1" Height="Auto" Click="btnCalcModel_Click" FontSize="14" FontWeight="Normal" Background="#FF290E5B" />
+            </Grid>
+        </GroupBox>
+        <Viewport3D x:Name="mainViewport" ClipToBounds="True" RenderTransformOrigin="0.50,0.50" Margin="146,39,37,366">
+            <Viewport3D.Camera>
+                <PerspectiveCamera
+                                FarPlaneDistance="100"
+                                LookDirection="-2,0,0"
+                                UpDirection="0,0,1"
+                                NearPlaneDistance="1"
+                                Position="2,0,0"
+                                FieldOfView="70"/>
+            </Viewport3D.Camera>
+            <ModelVisual3D>
+                <ModelVisual3D.Content>
+                    <AmbientLight
+                                    Color="White"/>
+                </ModelVisual3D.Content>
+            </ModelVisual3D>
+        </Viewport3D>
+        <TabControl x:Name="tab"  HorizontalAlignment="Left" Height="564" Margin="0,10,0,0" VerticalAlignment="Top" Width="818" Background="White" Grid.Column="2">
+            <TabItem Header="Simple">
+                <Grid Background="White">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="90*"/>
+                        <ColumnDefinition Width="65*"/>
+                        <ColumnDefinition Width="657*"/>
+                    </Grid.ColumnDefinitions>
+                    <oxy:PlotView x:Name="PlotView" Model="{Binding MyModel}" HorizontalAlignment="Left" Height="481" Margin="10,10,0,0" VerticalAlignment="Top" Width="792" RenderTransformOrigin="0.498,0.502" Grid.ColumnSpan="3"/>
+                    <Button x:Name="btnSaveSimpleGraph" Content="Save PDF grapf" HorizontalAlignment="Left" Margin="505.25,496,0,0" VerticalAlignment="Top" Width="134" Height="24" FontWeight="Normal" FontSize="14" Click="btnSaveSimpleGraph_Click" Grid.Column="2" Background="#FF290E5D" IsEnabled="False"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Profiles comparison">
+                <TabItem.Background>
+                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                        <GradientStop Color="#FFF0F0F0" Offset="0"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </TabItem.Background>
+                <Grid Background="White" Margin="0,0,-1,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="83*"/>
+                        <ColumnDefinition Width="33*"/>
+                        <ColumnDefinition Width="245*"/>
+                        <ColumnDefinition Width="368*"/>
+                        <ColumnDefinition Width="115*"/>
+                    </Grid.ColumnDefinitions>
+                    <oxy:PlotView x:Name="plotView2" HorizontalAlignment="Left" Height="144" Margin="118,48,0,0" VerticalAlignment="Top" Width="332" Grid.Column="3" Grid.ColumnSpan="2"/>
+                    <oxy:PlotView x:Name="plotView3" HorizontalAlignment="Left" Height="144" Margin="118,191,0,0" VerticalAlignment="Top" Width="332" Grid.Column="3" Grid.ColumnSpan="2"/>
+                    <oxy:PlotView x:Name="plotView4" HorizontalAlignment="Left" Height="144" Margin="118,336,0,0" VerticalAlignment="Top" Width="332" Grid.Column="3" Grid.ColumnSpan="2"/>
+                    <oxy:PlotView x:Name="plotView1" HorizontalAlignment="Left" Height="432" Margin="12,48,0,0" VerticalAlignment="Top" Width="448" Grid.ColumnSpan="4"/>
+                    <Button x:Name="btnLoadObs" Content="Load obs profile" HorizontalAlignment="Right" Margin="0,0,171,501" Width="149" Height="25" FontSize="14" FontWeight="Normal" Background="#FF290E5B" VerticalAlignment="Bottom" Click="btnLoadObs_Click" Grid.ColumnSpan="3" />
+                    <Button x:Name="btnClear" Content="Clear all" HorizontalAlignment="Right" Margin="0,0,35,501" Width="95" Height="25" FontSize="14" FontWeight="Normal" Background="#FF290E5B" VerticalAlignment="Bottom" Click="btnClear_Click" Grid.Column="2" />
+                    <Button x:Name="btnShowObs" Content="Show obs profile" HorizontalAlignment="Right" Margin="0,0,242,501" Width="144" Height="25" FontSize="14" FontWeight="Normal" Background="#FF290E5B" VerticalAlignment="Bottom" Grid.Column="2" IsEnabled="False" Click="btnShowObs_Click" Grid.ColumnSpan="2" />
+                    <Button x:Name="btnLeft" HorizontalAlignment="Left" Margin="4,471,0,-5" Width="62" Height="Auto" FontSize="8" FontWeight="Bold" Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="Tahoma" Foreground="#DD160749" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" Opacity="0.4" IsEnabled="False" RenderTransformOrigin="0.5,0.5" Click="btnLeft_Click" Grid.Column="2">
+                        <Button.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="-89.785"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Button.RenderTransform>
+                        <Image Height="70" Width="33" Source="up.png" RenderTransformOrigin="0.431,0.354"/>
+                    </Button>
+                    <Button x:Name="btnRight" HorizontalAlignment="Left" Margin="156,470,0,-5" VerticalAlignment="Top" Width="62" Height="71" FontSize="8" FontWeight="Bold" Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="Tahoma" Foreground="#DD160749" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" Opacity="0.4" RenderTransformOrigin="0.5,0.5" Click="btnRight_Click" Grid.Column="2">
+                        <Button.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform ScaleY="-1"/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="-89.785"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Button.RenderTransform>
+                        <Image Height="70" Width="33" Source="up.png" RenderTransformOrigin="0.775,0.121"/>
+                    </Button>
+                    <Button x:Name="btnZero" HorizontalAlignment="Left" Margin="87,486,0,8" Width="46" Height="Auto" FontSize="28" FontWeight="Bold" Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="Tw Cen MT Condensed Extra Bold" Foreground="#DD160749" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" Opacity="0.4" Content="0" Click="btnZero_Click" Grid.Column="2"/>
+                    <Button x:Name="btnSave1" Content="Save PDF comp" HorizontalAlignment="Left" Margin="105,494,0,0" VerticalAlignment="Top" Width="129" Height="24" FontWeight="Normal" FontSize="14" Background="#FF290E5D" Grid.Column="3" IsEnabled="False" Click="btnSave1_Click" />
+                    <Button x:Name="btnSave4" Content="Save PDF O-C" HorizontalAlignment="Left" Margin="241,494,0,0" VerticalAlignment="Top" Width="121" Height="24" FontWeight="Normal" FontSize="14" Background="#FF290E5D" Grid.Column="3" IsEnabled="False" Click="btnSave4_Click" Grid.ColumnSpan="2" />
+                    <TextBox x:Name="txtChi2" Padding="0" HorizontalAlignment="Left" Height="22" Margin="20,492,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="62" Grid.Column="3"/>
+                    <Label Content="chi^2" HorizontalAlignment="Left" Margin="213,493,0,0" VerticalAlignment="Top" Height="24" Width="40" FontSize="11" Grid.ColumnSpan="2" Grid.Column="2"/>
+                    <TextBox x:Name="txt_MoveStep" Padding="0" HorizontalAlignment="Left" Height="22" Margin="58,492,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="38" Text="0.05" Grid.ColumnSpan="2"/>
+                    <Label Content="step" HorizontalAlignment="Left" Margin="19,493,0,19" Width="39" FontSize="11" RenderTransformOrigin="-7.725,0.833"/>
+                    <Button x:Name="btnSavetxtOC" Content="txt O-C" HorizontalAlignment="Left" Margin="14,494,0,0" VerticalAlignment="Top" Width="82" Height="24" FontWeight="Normal" FontSize="14" Background="#FF290E5D" Grid.Column="4" IsEnabled="False" Click="btnSavetxtOC_Click"  />
+                    <CheckBox x:Name="ch_idents" Content="Line identification" Grid.Column="3" HorizontalAlignment="Left" Margin="322,13,0,0" VerticalAlignment="Top" Width="124" IsChecked="True" Grid.ColumnSpan="2"/>
+                    <TextBox x:Name="txtWidth" Padding="0" HorizontalAlignment="Left" Height="24" Margin="193,10,0,0" TextWrapping="Wrap" Text="500" VerticalAlignment="Top" Width="32" AutomationProperties.Name="txtInc" Grid.Column="3"/>
+                    <TextBox x:Name="txtHeight" Padding="0" HorizontalAlignment="Left" Height="24" Margin="246,10,0,0" TextWrapping="Wrap" Text="300" VerticalAlignment="Top" Width="32" AutomationProperties.Name="txtInc" Grid.Column="3"/>
+                    <Label Content="x" HorizontalAlignment="Left" Margin="227,16,0,0" VerticalAlignment="Top" Height="24" Width="20" FontSize="11" Grid.Column="3"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <ListBox x:Name="lbRings" HorizontalAlignment="Left" Height="88" Margin="167,227,0,0" VerticalAlignment="Top" Width="209" TextOptions.TextFormattingMode="Ideal" FontSize="11" Foreground="#DD0B0721">
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="{x:Type ListBoxItem}">
+                    <Setter Property="Padding" Value="0"/>
+                </Style>
+            </ListBox.ItemContainerStyle>
+        </ListBox>
+        <DataGrid x:Name="dataGridView1" HorizontalAlignment="Left" Height="123" Margin="159,402,0,0" VerticalAlignment="Top" Width="225"  AutoGenerateColumns="False" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Element" IsReadOnly="True" Binding="{Binding b1}" Width="86"/>
+                <DataGridTextColumn Header="N" IsReadOnly="True" Binding="{Binding b2}" Width="42"/>
+                <DataGridTextColumn Header="Abund. corr."  Binding="{Binding b3}" Width="80"/>
+            </DataGrid.Columns>
+            <DataGrid.CellStyle>
+                <Style TargetType="{x:Type DataGridCell}">
+                    <Setter Property="Padding" Value="3"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type DataGridCell}">
+                                <Border Padding="{TemplateBinding Padding}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                                    <ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </DataGrid.CellStyle>
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="Padding" Value="3"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type DataGridColumnHeader}">
+                                <Border Padding="{TemplateBinding Padding}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                                    <ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
+        </DataGrid>
+        <Button x:Name="btnSpec" Content="Calc spectrum" HorizontalAlignment="Left" Margin="158,547,0,0" VerticalAlignment="Top" Width="143" Height="26" FontWeight="Normal" FontSize="14" Click="Button_Click" Background="#FF290E5D" IsEnabled="False"/>
+        <Button x:Name="btnUp" HorizontalAlignment="Left" Margin="342,129,0,0" VerticalAlignment="Top" Width="50" Height="22" FontSize="8" FontWeight="Bold" Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="Tahoma" Click="btnUp_Click" Foreground="#DD160749" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" Opacity="0.4" IsEnabled="False">
+            <Image Height="22" Width="20" Source="up.png" RenderTransformOrigin="-2.288,-1.545"/>
+        </Button>
+        <Button x:Name="btnDown" HorizontalAlignment="Left" Margin="337,171,0,0" VerticalAlignment="Top" Width="57" Height="24" FontSize="8" FontWeight="Bold" Background="{x:Null}" BorderBrush="{x:Null}" RenderTransformOrigin="0.5,0.5" FontFamily="Tahoma" Click="btnDown_Click" Foreground="#DD160749" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" Opacity="0.4" IsEnabled="False">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="180"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+            <Image Height="17" Width="21" Source="down.png" RenderTransformOrigin="1.409,-2.714">
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="-1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform Y="89.992"/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
+        </Button>
+        <ProgressBar x:Name="prBar" HorizontalAlignment="Left" Height="10" Margin="158,531,0,0" VerticalAlignment="Top" Width="225"/>
+        <Button x:Name="btnInc" HorizontalAlignment="Left" Margin="342,151,0,0" VerticalAlignment="Top" Width="61" Height="22" FontSize="14" FontWeight="Bold" Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="Tahoma" Click="btnInc_Click" Foreground="#DD160749" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" Opacity="0.4" IsEnabled="False" Content="inc" Grid.ColumnSpan="3"/>
+        <Button x:Name="btnSave" Content="Save" HorizontalAlignment="Left" Margin="306,547,0,0" VerticalAlignment="Top" Width="78" Height="26" FontWeight="Normal" FontSize="14" Click="btnSave_Click" Background="#FF290E5D" IsEnabled="False" />
+        <CheckBox x:Name="chb_Black" Content="" HorizontalAlignment="Left" Margin="359,36,0,0" VerticalAlignment="Top" Height="59" Width="19"/>
+        <Button x:Name="btn_GraphNewWin" Content="Button" HorizontalAlignment="Left" Margin="356,95,0,0" VerticalAlignment="Top" Width="24" Height="21" IsEnabled="False" Click="btn_GraphNewWin_Click"/>
+        <Canvas HorizontalAlignment="Left" Height="100" Margin="-73,73,0,0" VerticalAlignment="Top" Width="100"/>
+        <Slider x:Name="slider_linelist" HorizontalAlignment="Left" Height="20" Margin="244,375,0,0" VerticalAlignment="Top" Width="50" RenderTransformOrigin="0.47,0.625" Maximum="1" SmallChange="1" Interval="1" IsSnapToTickEnabled="True"/>
+        <Label Content="Shim. linelist" HorizontalAlignment="Left" Height="24" Margin="163,376,0,0" VerticalAlignment="Top" Padding="0"/>
+        <Label Content="VALD linelist" HorizontalAlignment="Left" Height="24" Margin="305,376,0,0" VerticalAlignment="Top" Padding="0"/>
+    </Grid>
+</Window>
